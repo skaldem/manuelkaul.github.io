@@ -8,25 +8,20 @@
 
 html{
   scroll-behavior:smooth;
-  scroll-snap-type:y mandatory;
 }
 
 body{
   font-family:'Inter',sans-serif;
   background:#0d1117;
   color:#e6edf3;
-  overflow-y:scroll;
-  height:100vh;
+  overflow-y:auto;
 }
 
 /* Slides */
 
 .slide{
-  min-height:100vh;
   padding:64px;
   border-bottom:1px solid #30363d;
-  scroll-snap-align:start;
-  scroll-snap-stop:always;
 }
 
 .alt{
@@ -98,7 +93,12 @@ h3{
   align-items:center;
   justify-content:center;
   text-align:center;
-  background:linear-gradient(180deg,#0d1117,#161b22);
+  background:linear-gradient(
+    180deg,
+    #0d1117,
+    #161b22
+  );
+  min-height:100vh;
 }
 
 .cover-title{
@@ -156,131 +156,54 @@ h3{
   box-shadow:0 0 14px rgba(88,166,255,.5);
 }
 
-/* Responsive */
+/* Media */
 
-@media(max-width:980px){
-
-  .slide{
-    min-height:100vh;
-    padding:18px;
-  }
-
-  .hero,
-  .content-slide{
-    grid-template-columns:1fr;
-    gap:18px;
-  }
-
-  .hero-image,
-  .medium{
-    height:26vh;
-  }
-
-  .placeholder{
-    padding:12px;
-    border-radius:20px;
-  }
-
-  .eyebrow{
-    font-size:10px;
-    letter-spacing:2px;
-    margin-bottom:8px;
-  }
-
-  h1{
-    font-size:42px;
-    line-height:.95;
-    margin-bottom:10px;
-    letter-spacing:-2px;
-  }
-
-  h2,
-  .cover-title{
-    font-size:30px;
-    line-height:1;
-    margin-bottom:10px;
-    letter-spacing:-1px;
-  }
-
-  h3{
-    font-size:20px;
-    margin-bottom:8px;
-  }
-
-  .hero-text{
-    font-size:14px;
-    line-height:1.35;
-  }
-
-  .cover-line{
-    font-size:14px;
-  }
-
-  .portfolio-points{
-    gap:6px;
-  }
-
-  .portfolio-points li{
-    font-size:14px;
-    line-height:1.3;
-    padding-left:18px;
-  }
-
-  .portfolio-points li::before{
-    width:6px;
-    height:6px;
-    top:8px;
-  }
-
-  .hero-content,
-  .content{
-    max-width:100%;
-  }
-
-  /* ersetzt deine festen 34px Abstände optisch */
-  div[style*="height:34px"]{
-    height:8px !important;
-  }
+.medium{
+  height:56vh;
+  width:100%;
 }
 
-/* Kleine Smartphones */
+.placeholder{
+  width:100%;
+  height:100%;
+  border-radius:26px;
+  overflow:hidden;
+  border:1px solid #30363d;
+  background:#11161d;
+  position:relative;
 
-@media(max-width:430px){
-
-  .slide{
-    padding:14px;
-  }
-
-  .hero-image,
-  .medium{
-    height:22vh;
-  }
-
-  h1{
-    font-size:34px;
-  }
-
-  h2,
-  .cover-title{
-    font-size:26px;
-  }
-
-  h3{
-    font-size:18px;
-  }
-
-  .portfolio-points li,
-  .hero-text,
-  .cover-line{
-    font-size:13px;
-  }
-
-  .placeholder{
-    padding:8px;
-  }
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
 }
 
-/* Responsive */
+.placeholder img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center;
+  display:block;
+  transition:transform .25s ease;
+}
+
+.placeholder:hover img{
+  transform:scale(1.01);
+}
+
+.placeholder::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to top,
+    rgba(0,0,0,.08),
+    rgba(0,0,0,.02)
+  );
+  pointer-events:none;
+}
+
+/* Tablet & Mobile */
 
 @media(max-width:980px){
 
@@ -312,5 +235,43 @@ h3{
   .cover-line,
   .portfolio-points li{
     font-size:17px;
+  }
+}
+
+/* Kleine Smartphones */
+
+@media(max-width:480px){
+
+  .slide{
+    padding:24px 18px;
+  }
+
+  h1{
+    font-size:48px;
+  }
+
+  h2,
+  .cover-title{
+    font-size:38px;
+  }
+
+  h3{
+    font-size:24px;
+  }
+
+  .hero-image,
+  .medium{
+    height:36vh;
+  }
+
+  .portfolio-points li,
+  .hero-text,
+  .cover-line{
+    font-size:16px;
+  }
+
+  .eyebrow{
+    letter-spacing:2px;
+    font-size:11px;
   }
 }
